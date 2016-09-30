@@ -3,13 +3,13 @@
 int main(int argc, const char * argv[]) {
 
     char play;
-    char choice;
+    int choice;
 
     printf("Welcome to Two doors.\n");
     printf("Would you like to play? (y/n): ");
     scanf("%c", &play);
 
-    while (play == 'y') {
+    while (play == 'y') {   // looped for stretch goal with while loop
 
         printf("\nYou are a prisoner in a room with 2 doors and 2 guards.\n");
         printf("One of the doors will guide you to freedom and behind the other is a hangman --you don't know which is which.\n");
@@ -19,10 +19,10 @@ int main(int argc, const char * argv[]) {
         printf("\t1.Ask the truth-guard to point to the door of doom.\n");
         printf("\t2.Ask the liar-guard to point to the door of doom.\n");
         printf("\t3.Doesn't matter which one you pick.\n");
-        scanf(" %c", &choice);
+        scanf("%d", &choice);  // newline character left in the keyboard buffer from previous scanf(), requires space to ignore whitepsace characters in buffer.
 
-        char answer[128] = "No matter which one you choose the guards both tell you which door leads to death, and therefore you can pick the other door.\n";
-        switch (choice) {
+        char *answer = "No matter which one you choose the guards both tell you which door leads to death, and therefore you can pick the other door.\n";
+        switch (choice) {   //  I dont think the game logic is sound, but that's another issue.
             case 1:
                 printf("%s", answer);
                 break;
@@ -37,7 +37,7 @@ int main(int argc, const char * argv[]) {
         }
 
         printf("Would you like to play one more time? (y/n) ");
-        scanf(" %c", &play);
+        scanf("%c", &play);
     }
 
     return 0;
