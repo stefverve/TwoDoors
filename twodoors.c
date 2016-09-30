@@ -19,14 +19,14 @@ int main(int argc, const char * argv[]) {
         printf("\t1.Ask the truth-guard to point to the door of doom.\n");
         printf("\t2.Ask the liar-guard to point to the door of doom.\n");
         printf("\t3.Doesn't matter which one you pick.\n");
-        scanf("%d", &choice);  // newline character left in the keyboard buffer from previous scanf(), requires space to ignore whitepsace characters in buffer.
+        scanf("%d", &choice);  
 
         char *answer = "No matter which one you choose the guards both tell you which door leads to death, and therefore you can pick the other door.\n";
         switch (choice) {   //  I dont think the game logic is sound, but that's another issue.
             case 1:
                 printf("%s", answer);
-                break;
-            case 2:
+                break;             //  Why are we using switch at all here? Wouldn't it be the 
+            case 2:                //  same to just printf the answer string?
                 printf("%s", answer);
                 break;
             case 3:
@@ -37,7 +37,7 @@ int main(int argc, const char * argv[]) {
         }
 
         printf("Would you like to play one more time? (y/n) ");
-        scanf("%c", &play);
+        scanf(" %c", &play);  // scanf() and %c don't play nice. The space ignores leftover whitespace characters in the kb buffer, so you don't grab \n (leftover from previous scanf) as your single character input
     }
 
     return 0;
